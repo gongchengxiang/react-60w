@@ -18,6 +18,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         indent: [2, 4],
         'react/jsx-indent': [2, 4],
-
+        'react/jsx-indent-props': [2, 4],
+        'react/jsx-curly-spacing': [2, { when: 'never', attributes: { allowMultiline: false }, children: true }],
     },
 };
