@@ -1,0 +1,30 @@
+.divider {
+  width: 100%;
+  border-bottom: 1px dashed rgb(63, 62, 62);
+  margin: 30px 0;
+  position: relative;
+
+  .divider-name-wrap {
+    padding: 0 10px;
+    position: absolute;
+    left: 40px;
+    top: -12px;
+
+    span {
+      position: relative;
+      z-index: 1;
+
+      &+span {
+        display: block;
+        width: calc(100% + 20px);
+        border-bottom: 1px solid;
+        border-color: white;
+        position: absolute;
+        left: -10px;
+        top: 12px;
+        z-index: 0;
+      }
+    }
+  }
+
+}

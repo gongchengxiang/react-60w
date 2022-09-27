@@ -1,0 +1,25 @@
+.todo {
+  width: 600px;
+  // height: 420px;
+  margin: 0 auto;
+  margin-top: 140px;
+  border: 1px solid red;
+
+  .header {
+    height: 60px;
+    border-bottom: 1px solid red;
+  }
+
+  .content {
+    max-height: 300px;
+
+    .todo-item {
+      height: 60px;
+      border-bottom: 1px solid red;
+    }
+  }
+
+  .footer {
+    height: 60px;
+  }
+}
