@@ -28,6 +28,7 @@ module.exports = {
     'max-len': ['error', {code: 100}], // 每行长度
     'react/destructuring-assignment': [2, 'always'], // jsx 中的变量必须解构
     'jsx-a11y/no-noninteractive-element-interactions': [0], // 非交互元素是否可以设置事件监听
+    'jsx-a11y/no-static-element-interactions': [0], // 非交互元素是否可以设置事件监听
     'jsx-a11y/click-events-have-key-events': [0], // 点击事件是否必须带键盘事件
     'react/no-unknown-property': [0], // dom是否可以使用位置元素
   },
