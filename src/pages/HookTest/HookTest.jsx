@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
 function Test1() {
   const [num, setNum] = useState(() => 0);
@@ -24,50 +24,58 @@ function Test1() {
 }
 
 function LocalStorageDataTest() {
-  // const data = useLocalStorage();
   const refKey = useRef('');
   const refValue = useRef('');
-
   const [key, setKey] = useState('');
   const [value, setValue] = useState('');
-  const [kvList] = useState([]);
-  console.log(0, value);
-  const changeKey = (e) => {
-    if (e.keyCode === 13) {
-      setKey(refKey.current.value);
-    }
-  };
-  const changeValue = (e) => {
-    if (e.keyCode === 13) {
-      setValue(refValue.current.value);
-    }
-  };
+  const [kvList, setKvList] = useState([]);
 
-  // useEffect(() => {
-
-  // }, [key]);
+  useEffect(() => {
+    const keyValue = localStorage.getItem(key) || '';
+    if (key) {
+      localStorage.setItem(key, keyValue);
+    }
+    setValue(keyValue);
+  }, [key]);
 
   useEffect(() => {
     if (key) {
       localStorage.setItem(key, value);
     }
-    // const keyValue = localStorage.getItem(key) || '';
-    // setValue(keyValue);
     refValue.current.value = value;
+    const list = Object.keys(localStorage).map((k) => ({
+      key: k,
+      value: localStorage.getItem(k) || '',
+    }));
+    setKvList(list);
   }, [key, value]);
+
+  const submitKey = (e) => {
+    if (e.keyCode === 13) {
+      setKey(refKey.current.value);
+    }
+  };
+
+  const submitValue = (e) => {
+    if (e.keyCode === 13 && key) {
+      setValue(refValue.current.value);
+    }
+  };
 
   return (
     <>
       <div>localStorage测试</div>
       <div>
         key:
-        <input ref={refKey} type="text" onKeyUp={changeKey} />
+        <input ref={refKey} type="text" onKeyUp={submitKey} />
       </div>
       <div>
         value:
-        <input ref={refValue} type="text" onKeyUp={changeValue} />
+        <input ref={refValue} type="text" onKeyUp={submitValue} />
       </div>
       <ul>
+        <br />
+        map:
         {kvList.map((e) => (
           <li key={e.key}>
             {e.key}
