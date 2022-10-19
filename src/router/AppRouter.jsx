@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom';
 import AppLayout from '../pages/AppLayout';
 import App from '../pages/App/App';
+import {HookTest} from '../pages/HookTest';
 import TodoOutlet, {TodoClass, TodoHook} from '../pages/Todo';
 
 const router = createBrowserRouter([
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: 'app',
         element: <App />,
+      },
+      {
+        path: 'hook',
+        element: <HookTest />,
       },
       {
         path: 'todo',

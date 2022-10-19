@@ -16,7 +16,6 @@ export default function AppLayout() {
   };
   return (
     <div className="app-layout">
-
       <div className="nav">
         <div className="logo">
           <img src={reactLogo} alt="logo" />
@@ -27,6 +26,12 @@ export default function AppLayout() {
           className={getNavLinkClass}
         >
           app
+        </NavLink>
+        <NavLink
+          to="/hook"
+          className={getNavLinkClass}
+        >
+          hook
         </NavLink>
         <NavLink
           to="/todo/class"
@@ -44,7 +49,6 @@ export default function AppLayout() {
       <div className="app-content">
         <Outlet />
       </div>
-
     </div>
   );
 }

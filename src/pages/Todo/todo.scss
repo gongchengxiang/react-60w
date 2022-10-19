@@ -1,18 +1,21 @@
 .todo {
-  width: 600px; 
+  width: 600px;
   margin: 0 auto;
   margin-top: 140px;
   border: 1px solid red;
   position: relative;
+
   .err-msg {
     position: absolute;
     top: -30px;
     color: red;
   }
+
   .check {
     flex-basis: 60px;
     cursor: pointer;
     flex-shrink: 0;
+
     .check-btn {
       display: block;
       width: 20px;
@@ -21,12 +24,14 @@
       border-radius: 50%;
       margin: 14px auto;
       position: relative;
+
       &:hover {
         border-color: rgb(0, 153, 255);
       }
+
       &.active::before {
         content: '✔️';
-        font-size: 12px; 
+        font-size: 12px;
         position: absolute;
         line-height: 24px;
         top: -2px;
@@ -34,26 +39,29 @@
       }
     }
   }
+
   .header {
     height: 60px;
     border-bottom: 1px solid red;
     display: flex;
     line-height: 60px;
     position: relative;
-    
+
     .todo-input {
       flex-grow: 1;
       padding-left: 10px;
       padding-right: 50px;
       font-size: 18px;
       border-width: 0;
-      outline:0;
+      outline: 0;
       background-color: #fcfcfc;
-      &.with-err{
+
+      &.with-err {
         border-width: 1px;
         border-color: red;
       }
     }
+
     .add-btn {
       flex-basis: 60px;
       text-align: center;
@@ -61,10 +69,12 @@
       line-height: 55px;
       cursor: pointer;
       user-select: none;
+
       &:active {
         color: rgb(0, 153, 255);
       }
     }
+
     .clear-btn {
       position: absolute;
       right: 80px;
@@ -72,6 +82,7 @@
       color: rgb(183, 180, 180);
       cursor: pointer;
       user-select: none;
+
       &:active {
         color: rgb(0, 153, 255);
       }
@@ -81,18 +92,22 @@
   .content {
     max-height: 340px;
     overflow: auto;
+
     .no-data-tip {
       line-height: 60px;
       text-align: center;
       border-bottom: 1px solid red;
     }
+
     .todo-item {
       height: 60px;
       border-bottom: 1px solid red;
       display: flex;
+
       &:last-child {
         border-bottom: none;
       }
+
       .todo-text {
         flex-grow: 1;
         flex-shrink: 1;
@@ -102,6 +117,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
       }
+
       .delete {
         flex-basis: 60px;
         line-height: 50px;
@@ -111,6 +127,7 @@
         color: rgb(183, 180, 180);
         cursor: pointer;
         user-select: none;
+
         &:active {
           color: rgb(0, 153, 255);
         }
@@ -123,11 +140,13 @@
     line-height: 60px;
     display: flex;
     border-top: 1px solid red;
+
     .statistic-item {
       float: left;
       margin: 0 20px;
       cursor: pointer;
       user-select: none;
+
       &.active {
         color: red;
       }
