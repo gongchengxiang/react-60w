@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
+import LocalStorageTest from './LocalStorageTest';
 
 function Test1() {
   const [num, setNum] = useState(() => 0);
@@ -97,6 +98,10 @@ export default function HookTest() {
       <br />
       <br />
       <LocalStorageDataTest />
+      <br />
+      <br />
+      <br />
+      <LocalStorageTest />
     </div>
   );
 }
