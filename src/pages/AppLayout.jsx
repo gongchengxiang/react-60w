@@ -1,6 +1,9 @@
+import {useEffect} from 'react';
 import {
   Outlet,
   NavLink,
+  useNavigate,
+  useLocation,
 } from 'react-router-dom';
 import reactLogo from '../image/logo192.png';
 
@@ -14,6 +17,16 @@ export default function AppLayout() {
     }
     return className;
   };
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/app');
+    }
+  }, [location]);
+
   return (
     <div className="app-layout">
       <div className="nav">

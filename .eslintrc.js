@@ -30,6 +30,7 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': [0], // 非交互元素是否可以设置事件监听
     'jsx-a11y/no-static-element-interactions': [0], // 非交互元素是否可以设置事件监听
     'jsx-a11y/click-events-have-key-events': [0], // 点击事件是否必须带键盘事件
-    'react/no-unknown-property': [0], // dom是否可以使用位置元素
+    'react/no-unknown-property': [0], // dom是否可以使用未知属性
+    'no-unused-vars': [1], // 对定义了未使用的值进行警告
   },
 };

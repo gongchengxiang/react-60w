@@ -15,7 +15,6 @@ export default function useLocalStorage(defalut = {}) {
       localStorage.setItem(key, newMap[key] || '');
     });
     setObj(newMap);
-    console.log(1);
   }, []);
   const setItem = (key, value) => {
     localStorage.setItem(key, value);
