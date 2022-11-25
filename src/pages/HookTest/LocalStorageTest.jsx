@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import useLocalStorage from '../../common/hooks/useLocalStorage';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 export default function LocalStorageTest() {
   const refKey = useRef('');
