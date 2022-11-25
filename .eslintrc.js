@@ -26,11 +26,11 @@ module.exports = {
     'react/state-in-constructor': [0], // state必须是否写在constructor中
     'arrow-body-style': ['error', 'as-needed'], // 单行表达式函数是否必须为同行箭头函数
     'max-len': ['error', {code: 100}], // 每行长度
-    'react/destructuring-assignment': [2, 'always'], // jsx 中的变量必须解构
+    'react/destructuring-assignment': [0], // jsx 中的变量是否必须解构
     'jsx-a11y/no-noninteractive-element-interactions': [0], // 非交互元素是否可以设置事件监听
     'jsx-a11y/no-static-element-interactions': [0], // 非交互元素是否可以设置事件监听
     'jsx-a11y/click-events-have-key-events': [0], // 点击事件是否必须带键盘事件
-    'react/no-unknown-property': [0], // dom是否可以使用未知属性
+    'react/no-unknown-property': [0], // dom是否可以使用未知
     'no-unused-vars': [1], // 对定义了未使用的值进行警告
   },
 };

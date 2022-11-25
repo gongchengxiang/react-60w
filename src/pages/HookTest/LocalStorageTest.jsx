@@ -4,7 +4,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 export default function LocalStorageTest() {
   const refKey = useRef('');
   const refValue = useRef('');
-  const [obj, setItem] = useLocalStorage();
+  const [obj, setItem] = useLocalStorage({zzz: 'cnm'});
   const submitKey = (e) => {
     if (e.keyCode === 13) {
       const value = obj[refKey.current.value] || '';

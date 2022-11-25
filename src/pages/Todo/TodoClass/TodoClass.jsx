@@ -1,4 +1,5 @@
 import React from 'react';
+import useLocalStorage from '../../../hooks/useLocalStorage';
 import getCurrentId from '../../../common/util';
 
 export default class TodoClass extends React.Component {
@@ -10,6 +11,26 @@ export default class TodoClass extends React.Component {
     errMsg: '',
     currentType: 'all',
   };
+
+  componentDidMount() {
+    const todoListStr = localStorage.getItem('todoList');
+    if (todoListStr) {
+      const todoList = JSON.parse(todoListStr);
+      this.setState({
+        todoList,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todoList !== this.state.todoList) {
+      try {
+        localStorage.setItem('todoList', JSON.stringify(this.state.todoList));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   inputValue = (e) => {
     this.setState({
@@ -53,7 +74,7 @@ export default class TodoClass extends React.Component {
     this.setState({
       todoList: newTodoList,
       inputValue: '',
-      checkAll: currentList.find((e) => e.status === 'completed'),
+      checkAll: !!currentList.find((e) => e.status === 'completed'),
     });
   };
 
@@ -67,7 +88,7 @@ export default class TodoClass extends React.Component {
     }[currentType];
     this.setState({
       todoList: newTodoList,
-      checkAll: currentList.find((e) => e.status === 'completed'),
+      checkAll: !!currentList.find((e) => e.status === 'completed'),
     });
   };
 
@@ -82,7 +103,7 @@ export default class TodoClass extends React.Component {
     }[currentType];
     this.setState({
       todoList,
-      checkAll: currentList.find((e) => e.status === 'completed'),
+      checkAll: !!currentList.find((e) => e.status === 'completed'),
     });
   };
 
@@ -112,7 +133,7 @@ export default class TodoClass extends React.Component {
     }[type];
     this.setState({
       currentType: type,
-      checkAll: currentList.find((e) => e.status === 'completed'),
+      checkAll: !!currentList.find((e) => e.status === 'completed'),
     });
   };
 

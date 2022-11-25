@@ -22,7 +22,6 @@ export default function useLocalStorage(defalut = {}) {
       ...obj,
       ...{[key]: value},
     });
-    console.log(2);
   };
   return [obj, setItem];
 }
