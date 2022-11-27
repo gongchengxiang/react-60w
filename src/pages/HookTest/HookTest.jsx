@@ -102,6 +102,9 @@ export default function HookTest() {
       <br />
       <br />
       <LocalStorageTest />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

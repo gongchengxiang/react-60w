@@ -42,6 +42,7 @@
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "node-sass": "^7.0.3",
-    "sass-loader": "^13.0.2"
+    "sass-loader": "^13.0.2",
+    "typescript": "^4.9.4"
   }
 }

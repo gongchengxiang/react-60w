@@ -4,6 +4,7 @@ import ContextTest from './Context';
 import './App.scss';
 import Divider from '../../components/Divider';
 import LazyTest from './LazyTest';
+import A1 from './A1';
 
 function App() {
   const appName = 'react-test';
@@ -26,6 +27,7 @@ function App() {
       <br />
       <LazyTest />
 
+      <A1 />
     </div>
   );
 }
