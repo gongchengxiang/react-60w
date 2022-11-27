@@ -32,5 +32,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': [0], // 点击事件是否必须带键盘事件
     'react/no-unknown-property': [0], // dom是否可以使用未知
     'no-unused-vars': [1], // 对定义了未使用的值进行警告
+    'no-unused-expressions': [0],
+    'no-underscore-dangle': [0],
   },
 };

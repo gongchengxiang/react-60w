@@ -3,6 +3,7 @@ import TabTest from './TabTest';
 import ContextTest from './Context';
 import './App.scss';
 import Divider from '../../components/Divider';
+import LazyTest from './LazyTest';
 
 function App() {
   const appName = 'react-test';
@@ -22,6 +23,9 @@ function App() {
       <TabTest />
       <Divider />
       <ContextTest />
+      <br />
+      <LazyTest />
+
     </div>
   );
 }

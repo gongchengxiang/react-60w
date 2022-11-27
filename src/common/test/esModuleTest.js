@@ -14,4 +14,10 @@ export {
   numAdd,
 };
 
+export default {
+  obj,
+  numAdd,
+};
+
+// console.log('esm');
 // 经过测试发现，esModule的导出为引用关系，外面可以改里面的值

@@ -1,5 +1,4 @@
 import React from 'react';
-import useLocalStorage from '../../../hooks/useLocalStorage';
 import getCurrentId from '../../../common/util';
 
 export default class TodoClass extends React.Component {
@@ -18,6 +17,7 @@ export default class TodoClass extends React.Component {
       const todoList = JSON.parse(todoListStr);
       this.setState({
         todoList,
+        checkAll: !!todoList.find((e) => e.status === 'completed'),
       });
     }
   }
