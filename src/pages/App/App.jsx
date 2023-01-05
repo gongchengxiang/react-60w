@@ -1,3 +1,5 @@
+import {useEffect, useState} from 'react';
+import ReactDOM from 'react-dom';
 import ClassComp from './ClassComp';
 import TabTest from './TabTest';
 import ContextTest from './Context';
@@ -9,7 +11,7 @@ import A1 from './A1';
 function App() {
   const appName = 'react-test';
   const list = ['a', 'b', 'c'];
-  return (
+  const appJsx = (
     <div className={appName}>
       <div>{appName}</div>
       <div>{list.length > 5 ? 'long' : 'short'}</div>
@@ -26,10 +28,10 @@ function App() {
       <ContextTest />
       <br />
       <LazyTest />
-
       <A1 />
     </div>
   );
+  return ReactDOM.createPortal(appJsx, document.querySelector('.app-content'));
 }
 
 export default App;
