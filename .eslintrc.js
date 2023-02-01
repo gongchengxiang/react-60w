@@ -34,5 +34,6 @@ module.exports = {
     'no-unused-vars': [1], // 对定义了未使用的值进行警告
     'no-unused-expressions': [0],
     'no-underscore-dangle': [0],
+    'react/jsx-props-no-spreading': [0],
   },
 };

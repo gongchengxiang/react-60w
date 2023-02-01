@@ -58,6 +58,12 @@ export default function AppLayout() {
         >
           todo/hook
         </NavLink>
+        <NavLink
+          to="/asyncComp"
+          className={getNavLinkClass}
+        >
+          asyncComp
+        </NavLink>
       </div>
       <div className="app-content">
         <Outlet />

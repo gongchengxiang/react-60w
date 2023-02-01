@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import ReactDOM from 'react-dom';
 import ClassComp from './ClassComp';
 import TabTest from './TabTest';
@@ -9,8 +9,30 @@ import LazyTest from './LazyTest';
 import A1 from './A1';
 
 function App() {
+  const wrap = document.querySelector('.app-content');
   const appName = 'react-test';
   const list = ['a', 'b', 'c'];
+  const [a, setA] = useState('1');
+  const [a1, setA1] = useState('1');
+  const z = useMemo(
+    () => a,
+    [],
+  );
+
+  useEffect(() => {
+    setTimeout(() => {
+      setA('3');
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
+    if (!wrap) {
+      setTimeout(() => {
+        console.log(111112222);
+        setA1('2');
+      });
+    }
+  }, []);
   const appJsx = (
     <div className={appName}>
       <div>{appName}</div>
@@ -29,9 +51,14 @@ function App() {
       <br />
       <LazyTest />
       <A1 />
+      zlength:
+      {z}
     </div>
   );
-  return ReactDOM.createPortal(appJsx, document.querySelector('.app-content'));
+
+  if (wrap) {
+    return ReactDOM.createPortal(appJsx, wrap);
+  }
 }
 
 export default App;

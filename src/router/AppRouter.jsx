@@ -5,6 +5,7 @@ import AppLayout from '../pages/AppLayout';
 import App from '../pages/App/App';
 import {HookTest} from '../pages/HookTest';
 import TodoOutlet, {TodoClass, TodoHook} from '../pages/Todo';
+import {XX} from '../pages/AsyncComp';
 
 const router = createBrowserRouter([
   {
@@ -33,11 +34,21 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: 'asyncComp',
+        element: <XX />,
+      },
     ],
   },
   {
     path: '*',
-    element: <div>404</div>,
+    element: <AppLayout />,
+    children: [
+      {
+        path: '*',
+        element: <div>404</div>,
+      },
+    ],
   },
 ]);
 
