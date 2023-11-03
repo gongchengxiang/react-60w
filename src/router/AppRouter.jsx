@@ -1,11 +1,10 @@
-import {
-  createBrowserRouter, RouterProvider,
-} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import AppLayout from '../pages/AppLayout';
 import App from '../pages/App/App';
 import {HookTest} from '../pages/HookTest';
 import TodoOutlet, {TodoClass, TodoHook} from '../pages/Todo';
 import {XX} from '../pages/AsyncComp';
+import Test from '../pages/Test';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'asyncComp',
         element: <XX />,
+      },
+      {
+        path: 'test',
+        element: <Test />,
       },
     ],
   },

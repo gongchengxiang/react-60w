@@ -7,6 +7,7 @@ export default class AsyncComponent extends React.PureComponent {
 
   componentDidMount() {
     import('./AsyncComp').then((data) => {
+      console.log(data.default);
       setTimeout(() => {
         this.setState({
           component: data.default,

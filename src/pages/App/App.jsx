@@ -1,4 +1,6 @@
-import {useEffect, useMemo, useState} from 'react';
+import {
+  useEffect, useMemo, useState, useCallback,
+} from 'react';
 import ReactDOM from 'react-dom';
 import ClassComp from './ClassComp';
 import TabTest from './TabTest';
@@ -7,6 +9,31 @@ import './App.scss';
 import Divider from '../../components/Divider';
 import LazyTest from './LazyTest';
 import A1 from './A1';
+
+function F() {
+  const [count, setCount] = useState(0);
+  const handleClick = useCallback(
+    () => {
+      setCount((count1) => count1 + 1);
+    },
+    [],
+  );
+  console.log('render1');
+  useEffect(
+    () => {
+      console.log('effect1');
+      return () => {
+        console.log('effect return');
+      };
+    },
+    [count],
+  );
+  return (
+    <button onClick={handleClick} type="button">
+      {count}
+    </button>
+  );
+}
 
 function App() {
   const wrap = document.querySelector('.app-content');
@@ -53,6 +80,8 @@ function App() {
       <A1 />
       zlength:
       {z}
+
+      <F />
     </div>
   );
 

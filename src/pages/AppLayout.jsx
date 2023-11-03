@@ -1,10 +1,12 @@
 import {useEffect} from 'react';
+
 import {
   Outlet,
   NavLink,
   useNavigate,
   useLocation,
 } from 'react-router-dom';
+
 import reactLogo from '../image/logo192.png';
 
 export default function AppLayout() {
@@ -63,6 +65,12 @@ export default function AppLayout() {
           className={getNavLinkClass}
         >
           asyncComp
+        </NavLink>
+        <NavLink
+          to="/test"
+          className={getNavLinkClass}
+        >
+          test
         </NavLink>
       </div>
       <div className="app-content">
