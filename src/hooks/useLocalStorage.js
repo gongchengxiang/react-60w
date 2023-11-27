@@ -18,12 +18,12 @@ export default function useLocalStorage(defalut = {}) {
         localStorage.setItem(key, newMap[key] || '');
       }
     });
-    setObj(newMap);
-  }, []);
+    // setObj(newMap);
+  }, [obj]);
 
   const setItem = (key, value) => {
     localStorage.setItem(key, value);
-    setObj({
+     setObj({
       ...obj,
       ...{[key]: value},
     });
