@@ -1,6 +1,5 @@
 // ImportComponent.js
 import {
-    Suspense,
     lazy,
     useEffect,
     useMemo,
@@ -24,9 +23,10 @@ export default function AsyncComponent() {
     const LazyComponent = useMemo(() => {
         console.log('useMemo回调执行啦');
         return (
-            <Suspense fallback={<div>内层</div>}>
-                <ChildComponent />
-            </Suspense>
+            // <Suspense fallback={<div>内层</div>}>
+            //     <ChildComponent />
+            // </Suspense>
+            <>Suspense 奇怪问题</>
         );
     }, []);
 

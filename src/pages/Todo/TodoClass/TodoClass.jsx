@@ -197,20 +197,18 @@ export default class TodoClass extends React.Component {
                                 <div className="delete" onClick={() => this.clearTodo(item)}>×</div>
                             </li>
                         ))}
-                        {
-              !currentList.length && (
-                  <div className="no-data-tip">
-                      【
-                      {{
-                          all: '总计',
-                          todo: '待完成',
-                          completed: '已完成',
-                      }[currentType]}
-                      】
-                      暂无todo
-                  </div>
-              )
-            }
+                        {!currentList.length && (
+                            <div className="no-data-tip">
+                                【
+                                {{
+                                    all: '总计',
+                                    todo: '待完成',
+                                    completed: '已完成',
+                                }[currentType]}
+                                】
+                                暂无todo
+                            </div>
+                        )}
                     </ul>
                     {/* 页尾统计 */}
                     <div className="footer">

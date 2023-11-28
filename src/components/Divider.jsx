@@ -8,7 +8,7 @@ export default function Divider(props) {
             {
         name
             ? (
-                <div className="divider-name-wrap" bg-color={bgColor}>
+                <div className="divider-name-wrap">
                     <span>{name}</span>
                     <span style={{ borderColor: bgColor }} />
                 </div>
