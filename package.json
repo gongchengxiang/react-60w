@@ -8,7 +8,9 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "lint": "eslint .",
-        "lint:f": "eslint . --fix"
+        "lint:fix": "eslint . --fix",
+        "lint-staged": "eslint .",
+        "prepare": "husky install"
     },
     "dependencies": {
         "mobx": "^6.10.2",
@@ -24,16 +26,14 @@
         "@types/react-dom": "^18.2.7",
         "@vitejs/plugin-react-swc": "^3.3.2",
         "eslint": "^8.54.0",
+        "husky": "^8.0.3",
         "lint-staged": "^15.1.0",
         "sass": "^1.69.5",
         "simple-git-hooks": "^2.9.0",
         "typescript": "^5.0.2",
         "vite": "^5.0.2"
     },
-    "simple-git-hooks": {
-        "pre-commit": "yarn lint-staged"
-    },
     "lint-staged": {
-        "*": "eslint --fix"
+        "*": "eslint"
     }
 }
