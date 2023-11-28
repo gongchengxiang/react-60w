@@ -11,7 +11,7 @@
         "lint:fix": "eslint . --fix",
         "stylelint": "npx stylelint **/*.css **/*.scss",
         "stylelint:fix": "npx stylelint **/*.css **/*.scss --fix",
-        "lint-staged": "yarn lint && yarn stylelint",
+        "lint-staged": "yarn lint:fix && yarn stylelint:fix",
         "prepare": "husky install"
     },
     "dependencies": {
