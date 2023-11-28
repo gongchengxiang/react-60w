@@ -1,33 +1,32 @@
 .tab-wrap {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+    display: flex;
+    flex-flow: row nowrap;
+    border: 1px solid red;
 
-  .tab-nav {
-    flex-grow: 0;
-    flex-shrink: 0;
-    min-width: 200px;
+    .tab-nav {
+        flex-grow: 0;
+        flex-shrink: 0;
+        min-width: 200px;
 
-    li {
-      line-height: 40px;
-      text-align: center;
-      border-bottom: 1px solid red;
-      border-right: 1px solid red;
-      cursor: pointer;
+        li {
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            border-right: 1px solid red;
+            border-bottom: 1px solid red;
 
-      &:active {
-        color: red;
-      }
+            &:active {
+                color: red;
+            }
 
-      &:last-child {
-        border-bottom: none;
-      }
+            &:last-child {
+                border-bottom: none;
+            }
+        }
     }
-  }
 
-  .tab-content {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
+    .tab-content {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
 }
