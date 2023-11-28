@@ -1,13 +1,13 @@
-import './common/test'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import AppRouter from './router/AppRouter'
-import './main.scss'
+import './common/test';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import AppRouter from './router/AppRouter';
+import './main.scss';
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     // <React.StrictMode>
     <AppRouter />,
     // </React.StrictMode>,
-)
+);

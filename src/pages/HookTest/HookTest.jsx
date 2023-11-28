@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
-import LocalStorageTest from './LocalStorageTest'
+import { useEffect, useRef, useState } from 'react';
+import LocalStorageTest from './LocalStorageTest';
 
 function Test1() {
-    const [num, setNum] = useState(() => 0)
+    const [num, setNum] = useState(() => 0);
     // console.log(num);
     const add = () => {
-        setNum(num + 1)
-    }
+        setNum(num + 1);
+    };
     const reduce = () => {
-        setNum(num - 1)
-    }
+        setNum(num - 1);
+    };
 
     return (
         <>
@@ -21,45 +21,45 @@ function Test1() {
             </span>
             <button onClick={add} type="button">+</button>
         </>
-    )
+    );
 }
 
 function LocalStorageDataTest() {
-    const refKey = useRef('')
-    const refValue = useRef('')
-    const [key, setKey] = useState('')
-    const [value, setValue] = useState('')
-    const [kvList, setKvList] = useState([])
+    const refKey = useRef('');
+    const refValue = useRef('');
+    const [key, setKey] = useState('');
+    const [value, setValue] = useState('');
+    const [kvList, setKvList] = useState([]);
 
     useEffect(() => {
-        const keyValue = localStorage.getItem(key) || ''
+        const keyValue = localStorage.getItem(key) || '';
         if (key)
-            localStorage.setItem(key, keyValue)
+            localStorage.setItem(key, keyValue);
 
-        setValue(keyValue)
-    }, [key])
+        setValue(keyValue);
+    }, [key]);
 
     useEffect(() => {
         if (key)
-            localStorage.setItem(key, value)
+            localStorage.setItem(key, value);
 
-        refValue.current.value = value
+        refValue.current.value = value;
         const list = Object.keys(localStorage).map(k => ({
             key: k,
             value: localStorage.getItem(k) || '',
-        }))
-        setKvList(list)
-    }, [key, value])
+        }));
+        setKvList(list);
+    }, [key, value]);
 
     const submitKey = (e) => {
         if (e.keyCode === 13)
-            setKey(refKey.current.value)
-    }
+            setKey(refKey.current.value);
+    };
 
     const submitValue = (e) => {
         if (e.keyCode === 13 && key)
-            setValue(refValue.current.value)
-    }
+            setValue(refValue.current.value);
+    };
 
     return (
         <>
@@ -84,7 +84,7 @@ function LocalStorageDataTest() {
                 ))}
             </ul>
         </>
-    )
+    );
 }
 
 export default function HookTest() {
@@ -104,5 +104,5 @@ export default function HookTest() {
             <br />
             <br />
         </div>
-    )
+    );
 }

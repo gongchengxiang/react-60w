@@ -1,21 +1,21 @@
-import { useEffect } from 'react'
-import useStore from './useStore'
-import initUserId from './initUserId'
+import { useEffect } from 'react';
+import useStore from './useStore';
+import initUserId from './initUserId';
 
 export default function useUserId() {
-    const [store, setStore] = useStore()
+    const [store, setStore] = useStore();
 
     useEffect(() => {
-        let { userId } = store
+        let { userId } = store;
         const init = async () => {
-            console.log(userId)
+            console.log(userId);
             if (!userId) {
-                userId = await initUserId()
-                setStore({ ...store, userId })
+                userId = await initUserId();
+                setStore({ ...store, userId });
             }
-        }
-        init()
-    }, [])
+        };
+        init();
+    }, []);
 
-    return store.userId
+    return store.userId;
 }

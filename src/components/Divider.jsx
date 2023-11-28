@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
-import './Divider.scss'
+import PropTypes from 'prop-types';
+import './Divider.scss';
 
 export default function Divider(props) {
-    const { name, bgColor } = props
+    const { name, bgColor } = props;
     return (
         <div className="divider">
             {
@@ -17,13 +17,13 @@ export default function Divider(props) {
       }
 
         </div>
-    )
+    );
 }
 Divider.propTypes = {
     name: PropTypes.string,
     bgColor: PropTypes.string,
-}
+};
 Divider.defaultProps = {
     name: '',
     bgColor: 'red',
-}
+};

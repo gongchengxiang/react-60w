@@ -1,125 +1,125 @@
-import { useEffect, useState } from 'react'
-import useLocalStorage from '../../../hooks/useLocalStorage'
-import getCurrentId from '../../../common/util'
+import { useEffect, useState } from 'react';
+import useLocalStorage from '../../../hooks/useLocalStorage';
+import getCurrentId from '../../../common/util';
 
 export default function TodoHook() {
-    const [init, setInit] = useState(false)
-    const [data, setData] = useLocalStorage()
+    const [init, setInit] = useState(false);
+    const [data, setData] = useLocalStorage();
 
-    const [title] = useState('todo-hook')
-    const [todoList, setTodoList] = useState([])
-    const [checkAll, setCheckAll] = useState(false)
-    const [inputValue, setInputValue] = useState('')
-    const [errMsg, setErrMsg] = useState('')
-    const [currentType, setCurrentType] = useState('all')
+    const [title] = useState('todo-hook');
+    const [todoList, setTodoList] = useState([]);
+    const [checkAll, setCheckAll] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [currentType, setCurrentType] = useState('all');
 
     useEffect(() => {
         if (data._init && !init) {
-            const localTodo = JSON.parse(data.todoList || null) || []
-            setTodoList(localTodo)
-            setCheckAll(!!localTodo.find(e => e.status === 'completed'))
-            setInit(true)
+            const localTodo = JSON.parse(data.todoList || null) || [];
+            setTodoList(localTodo);
+            setCheckAll(!!localTodo.find(e => e.status === 'completed'));
+            setInit(true);
         }
-    }, [data])
+    }, [data]);
 
     useEffect(() => {
         if (init)
-            setData('todoList', JSON.stringify(todoList))
-    }, [todoList])
+            setData('todoList', JSON.stringify(todoList));
+    }, [todoList]);
 
     const onInput = (e) => {
-        setInputValue(e.target.value)
-        setErrMsg('')
-    }
+        setInputValue(e.target.value);
+        setErrMsg('');
+    };
 
     const clearInputValue = () => {
-        setInputValue('')
-    }
+        setInputValue('');
+    };
 
     const addTodo = () => {
         if (!inputValue) {
-            setErrMsg('请输入todo')
-            return
+            setErrMsg('请输入todo');
+            return;
         }
         if (todoList.find(e => e.text === inputValue)) {
-            setErrMsg('请输入非重复todo')
-            return
+            setErrMsg('请输入非重复todo');
+            return;
         }
-        const newTodoList = [{ text: inputValue, id: getCurrentId() }, ...todoList]
+        const newTodoList = [{ text: inputValue, id: getCurrentId() }, ...todoList];
         const currentList = {
             all: newTodoList,
             todo: newTodoList.filter(e => e.status !== 'completed'),
             completed: newTodoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
 
-        setTodoList(newTodoList)
-        setInputValue('')
-        setCheckAll(!!currentList.find(e => e.status === 'completed'))
-    }
+        setTodoList(newTodoList);
+        setInputValue('');
+        setCheckAll(!!currentList.find(e => e.status === 'completed'));
+    };
 
     const clearTodo = (item) => {
-        const newTodoList = todoList.filter(e => e !== item)
+        const newTodoList = todoList.filter(e => e !== item);
         const currentList = {
             all: newTodoList,
             todo: newTodoList.filter(e => e.status !== 'completed'),
             completed: newTodoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
 
-        setTodoList(newTodoList)
-        setCheckAll(!!currentList.find(e => e.status === 'completed'))
-    }
+        setTodoList(newTodoList);
+        setCheckAll(!!currentList.find(e => e.status === 'completed'));
+    };
 
     const checkTodo = (item) => {
-        const targetTodo = todoList.find(e => e === item)
-        targetTodo.status = item.status === 'completed' ? 'todo' : 'completed'
+        const targetTodo = todoList.find(e => e === item);
+        targetTodo.status = item.status === 'completed' ? 'todo' : 'completed';
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[currentType]
-        setTodoList([...todoList])
-        setCheckAll(!!currentList.find(e => e.status === 'completed'))
-    }
+        }[currentType];
+        setTodoList([...todoList]);
+        setCheckAll(!!currentList.find(e => e.status === 'completed'));
+    };
 
     const checkAllTodo = () => {
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
         currentList.forEach((item) => {
-            const current = item
-            current.status = checkAll ? 'todo' : 'completed'
-        })
-        setTodoList([...todoList])
-        setCheckAll(currentList.length ? !checkAll : false)
-    }
+            const current = item;
+            current.status = checkAll ? 'todo' : 'completed';
+        });
+        setTodoList([...todoList]);
+        setCheckAll(currentList.length ? !checkAll : false);
+    };
 
     const onKeyUp = (e) => {
         if (e.keyCode === 13)
-            addTodo()
-    }
+            addTodo();
+    };
 
     const changeCurrentType = (type) => {
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[type]
+        }[type];
 
-        setCurrentType(type)
-        setCheckAll(!!currentList.find(e => e.status === 'completed'))
-    }
+        setCurrentType(type);
+        setCheckAll(!!currentList.find(e => e.status === 'completed'));
+    };
 
     const currentList = {
         all: todoList,
         todo: todoList.filter(e => e.status !== 'completed'),
         completed: todoList.filter(e => e.status === 'completed'),
-    }[currentType]
+    }[currentType];
 
     const getStatisticItemClass = type => (`statistic-item ${
     type === currentType ? 'active' : ''
-  }`)
+  }`);
 
     return (
         <>
@@ -205,5 +205,5 @@ export default function TodoHook() {
                 </div>
             </div>
         </>
-    )
+    );
 }

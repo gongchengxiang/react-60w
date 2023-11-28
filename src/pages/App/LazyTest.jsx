@@ -1,10 +1,10 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy } from 'react';
 
 const LazyComp = lazy(async () => new Promise((resolve) => {
     setTimeout(() => {
-        resolve(import('../../components/LazyComp'))
-    }, 3000)
-}))
+        resolve(import('../../components/LazyComp'));
+    }, 3000);
+}));
 
 export default function LazyTest() {
     return (
@@ -14,5 +14,5 @@ export default function LazyTest() {
                 <LazyComp />
             </Suspense>
         </div>
-    )
+    );
 }

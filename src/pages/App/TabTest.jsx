@@ -1,20 +1,20 @@
-import React from 'react'
-import Tab from '../../components/Tab'
-import TabItem from '../../components/TabItem'
+import React from 'react';
+import Tab from '../../components/Tab';
+import TabItem from '../../components/TabItem';
 
 export default class TabTest extends React.Component {
     state = {
         activeTab: 'tab1',
-    }
+    };
 
     onTabChange = (tabItem) => {
         this.setState({
             activeTab: tabItem.props.name,
-        })
-    }
+        });
+    };
 
     render() {
-        const { activeTab } = this.state
+        const { activeTab } = this.state;
         return (
             <Tab active={activeTab} onTabChange={this.onTabChange}>
                 <TabItem name="tab1">
@@ -31,6 +31,6 @@ export default class TabTest extends React.Component {
                     <div>tab4 content</div>
                 </TabItem>
             </Tab>
-        )
+        );
     }
 }

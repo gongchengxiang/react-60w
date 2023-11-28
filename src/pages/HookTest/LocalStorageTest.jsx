@@ -1,25 +1,25 @@
-import { useRef } from 'react'
-import useLocalStorage from '../../hooks/useLocalStorage'
+import { useRef } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 export default function LocalStorageTest() {
-    const refKey = useRef('')
-    const refValue = useRef('')
-    const [obj, setItem] = useLocalStorage({ zzz: 'cnm' })
+    const refKey = useRef('');
+    const refValue = useRef('');
+    const [obj, setItem] = useLocalStorage({ zzz: 'cnm' });
     const submitKey = (e) => {
         if (e.keyCode === 13) {
-            const value = obj[refKey.current.value] || ''
-            refValue.current.value = value
-            setItem(refKey.current.value, value)
+            const value = obj[refKey.current.value] || '';
+            refValue.current.value = value;
+            setItem(refKey.current.value, value);
         }
-    }
+    };
 
     const submitValue = (e) => {
         if (e.keyCode === 13) {
-            const key = refKey.current.value
+            const key = refKey.current.value;
             if (key)
-                setItem(key, refValue.current.value)
+                setItem(key, refValue.current.value);
         }
-    }
+    };
     return (
         <>
             <div>localStorage hook测试</div>
@@ -43,5 +43,5 @@ export default function LocalStorageTest() {
                 ))}
             </ul>
         </>
-    )
+    );
 }

@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import Async1 from './Async1'
+import { useState } from 'react';
+import Async1 from './Async1';
 
 export default function NormalComp() {
-    const [AsyncComp, setAsyncComp] = useState(null)
-    const [status, setStatus] = useState(1)
+    const [AsyncComp, setAsyncComp] = useState(null);
+    const [status, setStatus] = useState(1);
     const getAsyncComp = () => {
         if (status !== 2) {
-            setStatus(2)
+            setStatus(2);
             setTimeout(() => {
                 import(/* webpackChunkName: "async-comp" */ './AsyncComp').then((data) => {
-                    setAsyncComp({ C: data.default })
-                    setStatus(3)
-                })
-            }, 1000)
+                    setAsyncComp({ C: data.default });
+                    setStatus(3);
+                });
+            }, 1000);
         }
-    }
+    };
 
     return (
         <div>
@@ -35,5 +35,5 @@ export default function NormalComp() {
             {AsyncComp?.C ? (status === 3 && <AsyncComp.C />) : null}
 
         </div>
-    )
+    );
 }

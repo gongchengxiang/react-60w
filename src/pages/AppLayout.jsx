@@ -1,32 +1,32 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 import {
     NavLink,
     Outlet,
     useLocation,
     useNavigate,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-import reactLogo from '../image/logo192.png'
+import reactLogo from '../image/logo192.png';
 
 export default function AppLayout() {
     const getNavLinkClass = (status) => {
-        let className = 'nav-item'
+        let className = 'nav-item';
         if (status.isActive)
-            className += ' active'
+            className += ' active';
         else if (status.isPending)
-            className += ' pending'
+            className += ' pending';
 
-        return className
-    }
+        return className;
+    };
 
-    const navigate = useNavigate()
-    const location = useLocation()
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         if (location.pathname === '/')
-            navigate('/app')
-    }, [location])
+            navigate('/app');
+    }, [location]);
 
     return (
         <div className="app-layout">
@@ -76,5 +76,5 @@ export default function AppLayout() {
                 <Outlet />
             </div>
         </div>
-    )
+    );
 }

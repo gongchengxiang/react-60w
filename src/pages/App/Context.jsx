@@ -1,10 +1,10 @@
-import React, { createContext } from 'react'
-import PropTypes from 'prop-types'
+import React, { createContext } from 'react';
+import PropTypes from 'prop-types';
 
-const { Provider, Consumer } = createContext()
+const { Provider, Consumer } = createContext();
 
 function A(props) {
-    const { changeCommonValue } = props
+    const { changeCommonValue } = props;
     return (
         <div>
             A-common:
@@ -18,11 +18,11 @@ function A(props) {
                 changeByChild
             </button>
         </div>
-    )
+    );
 }
 A.propTypes = {
     changeCommonValue: PropTypes.func.isRequired,
-}
+};
 
 function B() {
     return (
@@ -32,22 +32,22 @@ function B() {
                 {value => <span>{value.testNum}</span>}
             </Consumer>
         </div>
-    )
+    );
 }
 
 export default class ContextTest extends React.Component {
     state = {
         testNum: 1,
-    }
+    };
 
     changeCommonValue = (value) => {
         this.setState({
             testNum: value,
-        })
-    }
+        });
+    };
 
     render() {
-        const { testNum } = this.state
+        const { testNum } = this.state;
         return (
             <div>
                 ContextTest
@@ -62,6 +62,6 @@ export default class ContextTest extends React.Component {
                     <B changeCommonValue={this.changeCommonValue} />
                 </Provider>
             </div>
-        )
+        );
     }
 }

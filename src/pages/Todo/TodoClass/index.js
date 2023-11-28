@@ -1,3 +1,3 @@
-import TodoClass from './TodoClass'
+import TodoClass from './TodoClass';
 
-export default TodoClass
+export default TodoClass;

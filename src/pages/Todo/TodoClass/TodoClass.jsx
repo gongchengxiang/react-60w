@@ -1,5 +1,5 @@
-import React from 'react'
-import getCurrentId from '../../../common/util'
+import React from 'react';
+import getCurrentId from '../../../common/util';
 
 export default class TodoClass extends React.Component {
     state = {
@@ -9,26 +9,26 @@ export default class TodoClass extends React.Component {
         inputValue: '',
         errMsg: '',
         currentType: 'all',
-    }
+    };
 
     componentDidMount() {
-        const todoListStr = localStorage.getItem('todoList')
+        const todoListStr = localStorage.getItem('todoList');
         if (todoListStr) {
-            const todoList = JSON.parse(todoListStr)
+            const todoList = JSON.parse(todoListStr);
             this.setState({
                 todoList,
                 checkAll: !!todoList.find(e => e.status === 'completed'),
-            })
+            });
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.todoList !== this.state.todoList) {
             try {
-                localStorage.setItem('todoList', JSON.stringify(this.state.todoList))
+                localStorage.setItem('todoList', JSON.stringify(this.state.todoList));
             }
             catch (error) {
-                console.log(error)
+                console.log(error);
             }
         }
     }
@@ -37,105 +37,105 @@ export default class TodoClass extends React.Component {
         this.setState({
             inputValue: e.target.value,
             errMsg: '',
-        })
-    }
+        });
+    };
 
     enterValue = (e) => {
         if (e.keyCode === 13)
-            this.addTodo()
-    }
+            this.addTodo();
+    };
 
     clearInputValue = () => {
         this.setState({
             inputValue: '',
-        })
-    }
+        });
+    };
 
     addTodo = () => {
-        const { inputValue, todoList, currentType } = this.state
+        const { inputValue, todoList, currentType } = this.state;
         if (!inputValue) {
             this.setState({
                 errMsg: '请输入todo',
-            })
-            return
+            });
+            return;
         }
         if (todoList.find(e => e.text === inputValue)) {
             this.setState({
                 errMsg: '请输入非重复todo',
-            })
-            return
+            });
+            return;
         }
-        const newTodoList = [{ text: inputValue, id: getCurrentId() }, ...todoList]
+        const newTodoList = [{ text: inputValue, id: getCurrentId() }, ...todoList];
         const currentList = {
             all: newTodoList,
             todo: newTodoList.filter(e => e.status !== 'completed'),
             completed: newTodoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
         this.setState({
             todoList: newTodoList,
             inputValue: '',
             checkAll: !!currentList.find(e => e.status === 'completed'),
-        })
-    }
+        });
+    };
 
     clearTodo = (item) => {
-        const { todoList, currentType } = this.state
-        const newTodoList = todoList.filter(e => e !== item)
+        const { todoList, currentType } = this.state;
+        const newTodoList = todoList.filter(e => e !== item);
         const currentList = {
             all: newTodoList,
             todo: newTodoList.filter(e => e.status !== 'completed'),
             completed: newTodoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
         this.setState({
             todoList: newTodoList,
             checkAll: !!currentList.find(e => e.status === 'completed'),
-        })
-    }
+        });
+    };
 
     checkTodo = (item) => {
-        const { todoList, currentType } = this.state
-        const targetTodo = todoList.find(e => e === item)
-        targetTodo.status = item.status === 'completed' ? 'todo' : 'completed'
+        const { todoList, currentType } = this.state;
+        const targetTodo = todoList.find(e => e === item);
+        targetTodo.status = item.status === 'completed' ? 'todo' : 'completed';
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
         this.setState({
             todoList,
             checkAll: !!currentList.find(e => e.status === 'completed'),
-        })
-    }
+        });
+    };
 
     checkAllTodo = () => {
-        const { checkAll, todoList, currentType } = this.state
+        const { checkAll, todoList, currentType } = this.state;
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
         currentList.forEach((item) => {
-            const current = item
-            current.status = checkAll ? 'todo' : 'completed'
-        })
+            const current = item;
+            current.status = checkAll ? 'todo' : 'completed';
+        });
         this.setState({
             todoList,
             checkAll: currentList.length ? !checkAll : false,
-        })
-    }
+        });
+    };
 
     changeCurrentType = (type) => {
-        const { todoList } = this.state
+        const { todoList } = this.state;
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[type]
+        }[type];
         this.setState({
             currentType: type,
             checkAll: !!currentList.find(e => e.status === 'completed'),
-        })
-    }
+        });
+    };
 
     render() {
         const {
@@ -145,15 +145,15 @@ export default class TodoClass extends React.Component {
             inputValue,
             errMsg,
             currentType,
-        } = this.state
+        } = this.state;
         const currentList = {
             all: todoList,
             todo: todoList.filter(e => e.status !== 'completed'),
             completed: todoList.filter(e => e.status === 'completed'),
-        }[currentType]
+        }[currentType];
         const getStatisticItemClass = type => (`statistic-item ${
       type === currentType ? 'active' : ''
-    }`)
+    }`);
         return (
             <>
                 <div>
@@ -238,6 +238,6 @@ export default class TodoClass extends React.Component {
                     </div>
                 </div>
             </>
-        )
+        );
     }
 }

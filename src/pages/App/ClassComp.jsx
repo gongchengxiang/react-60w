@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 export default class ClassComp extends React.Component {
     state = {
         test: 'class-comp-test',
-    }
+    };
 
     render() {
-        const { test, testProp } = this.state
+        const { test, testProp } = this.state;
         return (
             <div>
                 <div>
@@ -16,6 +16,6 @@ export default class ClassComp extends React.Component {
                     {testProp}
                 </div>
             </div>
-        )
+        );
     }
 }

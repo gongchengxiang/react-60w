@@ -1,2 +1,2 @@
-export default {}
-export { default as XX } from './NormalComp'
+export default {};
+export { default as XX } from './NormalComp';
