@@ -12,8 +12,8 @@ export default await antfu(
     {
         rules: {
             // 'no-unused-vars': 'warn',
-            'no-console': 'warn',
-            'unused-imports/no-unused-vars': 'warn',
+            // 'no-console': 'warn',
+            // 'unused-imports/no-unused-vars': 'warn',
         },
     },
 )
