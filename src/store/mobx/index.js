@@ -1,19 +1,19 @@
-import {makeAutoObservable} from 'mobx';
+import { makeAutoObservable } from 'mobx'
 
 class Num {
-  num = 0;
+    num = 0
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+    constructor() {
+        makeAutoObservable(this)
+    }
 
-  inc() {
-    this.num += 1;
-  }
+    inc() {
+        this.num += 1
+    }
 
-  dec() {
-    this.num -= 1;
-  }
+    dec() {
+        this.num -= 1
+    }
 }
 
-export default new Num();
+export default new Num()

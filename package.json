@@ -1,28 +1,39 @@
 {
-  "name": "react-60w",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "mobx": "^6.10.2",
-    "mobx-react-lite": "^4.0.5",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.18.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react-swc": "^3.3.2",
-    "eslint": "^8.54.0",
-    "sass": "^1.69.5",
-    "typescript": "^5.0.2",
-    "vite": "^5.0.2"
-  }
+    "name": "react-60w",
+    "type": "module",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "dependencies": {
+        "mobx": "^6.10.2",
+        "mobx-react-lite": "^4.0.5",
+        "prop-types": "^15.8.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.18.0"
+    },
+    "devDependencies": {
+        "@antfu/eslint-config": "^2.1.1",
+        "@types/react": "^18.2.15",
+        "@types/react-dom": "^18.2.7",
+        "@vitejs/plugin-react-swc": "^3.3.2",
+        "eslint": "^8.54.0",
+        "lint-staged": "^15.1.0",
+        "sass": "^1.69.5",
+        "simple-git-hooks": "^2.9.0",
+        "typescript": "^5.0.2",
+        "vite": "^5.0.2"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm lint-staged"
+    },
+    "lint-staged": {
+        "*": "eslint --fix"
+    }
 }

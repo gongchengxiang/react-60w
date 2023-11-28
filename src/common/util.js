@@ -1,3 +1,3 @@
-const getCurrentId = () => `${Date.now()}_${Math.random()}`;
+const getCurrentId = () => `${Date.now()}_${Math.random()}`
 
-export default getCurrentId;
+export default getCurrentId
