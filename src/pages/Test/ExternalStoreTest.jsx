@@ -1,4 +1,4 @@
-import { useRef, useSyncExternalStore } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 
 const externalStore = function () {
     let todos = ['init'];
@@ -24,24 +24,30 @@ const externalStore = function () {
         subscribe(listener) {
             console.log('listener', listener);
             listeners = [...listeners, listener];
+            return () => {
+                listeners = listeners.filter(l => l !== listener);
+            };
         },
     };
 };
 const store = externalStore();
+
 function useTodo() {
     const todos = useSyncExternalStore(store.subscribe, () => store.getTodos());
+    console.log(todos);
     return [todos, store.addTodo];
 }
 
 function TodoAdd() {
-    const ref = useRef();
+    const [input, setInput] = useState();
     const [,addTodo] = useTodo();
     const add = () => {
-        addTodo(ref.current.value);
+        addTodo(input);
+        setInput('');
     };
     return (
         <div>
-            <input type="text" ref={ref} />
+            <input value={input}type="text" onChange={e => setInput(e.target.value)} />
             <button onClick={add}>add</button>
         </div>
     );
@@ -50,12 +56,13 @@ function TodoAdd() {
 export default function ExternalStoreTest() {
     console.log('ExternalStoreTest');
     const [todos] = useTodo();
+
     return (
         <div>
             <br />
             <div>ExternalStoreTest</div>
             <TodoAdd />
-            <TodoAdd />
+            {todos.length % 2 === 0 && <TodoAdd />}
             <ul>
                 {todos.map(todo => <li key={todo}>{todo}</li>)}
             </ul>
