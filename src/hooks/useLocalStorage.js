@@ -14,8 +14,9 @@ export default function useLocalStorage(defalut = {}) {
             _init: true,
         };
         Object.keys(newMap).forEach((key) => {
-            if (key !== '_init')
+            if (key !== '_init') {
                 localStorage.setItem(key, newMap[key] || '');
+            }
         });
     // setObj(newMap);
     }, [obj]);

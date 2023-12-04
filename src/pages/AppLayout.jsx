@@ -12,10 +12,12 @@ import reactLogo from '../image/logo192.png';
 export default function AppLayout() {
     const getNavLinkClass = (status) => {
         let className = 'nav-item';
-        if (status.isActive)
+        if (status.isActive) {
             className += ' active';
-        else if (status.isPending)
+        }
+        else if (status.isPending) {
             className += ' pending';
+        }
 
         return className;
     };
@@ -24,8 +26,9 @@ export default function AppLayout() {
     const location = useLocation();
 
     useEffect(() => {
-        if (location.pathname === '/')
+        if (location.pathname === '/') {
             navigate('/app');
+        }
     }, [location]);
 
     return (

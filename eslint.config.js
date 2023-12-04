@@ -6,6 +6,7 @@ export default await antfu(
             indent: 4, // 4, or 'tab'
             quotes: 'single', // or 'double'
             semi: true,
+
         },
         typescript: true,
         react: true,
@@ -17,6 +18,8 @@ export default await antfu(
             'unused-imports/no-unused-vars': 'warn',
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn',
+            'curly': ['error', 'multi-line'],
+            'react/prop-types': 'warn',
         },
     },
 );

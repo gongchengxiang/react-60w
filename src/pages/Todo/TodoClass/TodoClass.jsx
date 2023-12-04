@@ -41,8 +41,9 @@ export default class TodoClass extends React.Component {
     };
 
     enterValue = (e) => {
-        if (e.keyCode === 13)
+        if (e.keyCode === 13) {
             this.addTodo();
+        }
     };
 
     clearInputValue = () => {

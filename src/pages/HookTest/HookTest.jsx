@@ -33,15 +33,17 @@ function LocalStorageDataTest() {
 
     useEffect(() => {
         const keyValue = localStorage.getItem(key) || '';
-        if (key)
+        if (key) {
             localStorage.setItem(key, keyValue);
+        }
 
         setValue(keyValue);
     }, [key]);
 
     useEffect(() => {
-        if (key)
+        if (key) {
             localStorage.setItem(key, value);
+        }
 
         refValue.current.value = value;
         const list = Object.keys(localStorage).map(k => ({
@@ -52,13 +54,15 @@ function LocalStorageDataTest() {
     }, [key, value]);
 
     const submitKey = (e) => {
-        if (e.keyCode === 13)
+        if (e.keyCode === 13) {
             setKey(refKey.current.value);
+        }
     };
 
     const submitValue = (e) => {
-        if (e.keyCode === 13 && key)
+        if (e.keyCode === 13 && key) {
             setValue(refValue.current.value);
+        }
     };
 
     return (

@@ -88,8 +88,9 @@ function App() {
         </div>
     );
 
-    if (wrap)
+    if (wrap) {
         return ReactDOM.createPortal(appJsx, wrap);
+    }
 }
 
 export default App;

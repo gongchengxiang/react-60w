@@ -16,8 +16,9 @@ export default function LocalStorageTest() {
     const submitValue = (e) => {
         if (e.keyCode === 13) {
             const key = refKey.current.value;
-            if (key)
+            if (key) {
                 setItem(key, refValue.current.value);
+            }
         }
     };
     return (

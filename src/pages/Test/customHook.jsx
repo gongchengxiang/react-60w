@@ -15,7 +15,6 @@ const customState = function () {
             state.ininValue = ininValue;
             state.value = ininValue;
         }
-
         const [v, f] = useState(true);
         useEffect(() => {
             return () => {

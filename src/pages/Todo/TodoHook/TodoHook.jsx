@@ -23,8 +23,9 @@ export default function TodoHook() {
     }, [data]);
 
     useEffect(() => {
-        if (init)
+        if (init) {
             setData('todoList', JSON.stringify(todoList));
+        }
     }, [todoList]);
 
     const onInput = (e) => {
@@ -96,8 +97,9 @@ export default function TodoHook() {
     };
 
     const onKeyUp = (e) => {
-        if (e.keyCode === 13)
+        if (e.keyCode === 13) {
             addTodo();
+        }
     };
 
     const changeCurrentType = (type) => {
